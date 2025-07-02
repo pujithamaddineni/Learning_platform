@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Flow Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <div id="sidebar-trigger-area"></div>
+
+    <aside id="sidebar">
+        <div>
+            <div class="text-2xl font-bold text-indigo-600 mb-10">LearnFlow</div>
+            <nav>
+                <ul>
+                    <li class="mb-3">
+                        <a href="#dashboard-section" class="sidebar-link flex items-center text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 p-3 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+                            Dashboard
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#my-courses-section" class="sidebar-link flex items-center text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 p-3 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9V7h2v10zm4 0h-2V7h2v10z"></path></svg>
+                            My Courses
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#explore-section" class="sidebar-link flex items-center text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 p-3 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"></path></svg>
+                            Explore
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#ai-tools-section" class="sidebar-link flex items-center text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 p-3 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                            AI Tools
+                            <span class="ml-2 bg-red-500 text-white text-xs font-semibold px-2 py-0.5 rounded-full">New</span>
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#settings-section" class="sidebar-link flex items-center text-gray-700 hover:text-indigo-600 hover:bg-indigo-50 p-3 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19.43 12.98c.04-.32.07-.64.07-.98s-.03-.66-.07-.98l2.11-1.65c.19-.15.24-.42.12-.64l-2-3.46c-.12-.22-.39-.3-.61-.22l-2.49 1c-.52-.4-1.09-.76-1.71-1.06L14.4 2.81c-.09-.23-.3-.39-.55-.39h-4c-.25 0-.46.16-.55.39L9.12 5.73c-.62.3-1.19.66-1.71 1.06l-2.49-1c-.22-.08-.49 0-.61.22l-2 3.46c-.12.22-.07.49.12.64l2.11 1.65c-.04.32-.07.64-.07.98s.03.66.07.98l-2.11 1.65c-.19.15-.24.42-.12.64l2 3.46c.12.22.39.3.61.22l2.49-1c.52.4 1.09.76 1.71 1.06l.35 2.72c.09.23.3.39.55.39h4c.25 0 .46-.16.55-.39l.35-2.72c.62-.3 1.19-.66 1.71-1.06l2.49 1c.22.08.49 0 .61-.22l2-3.46c.12-.22.07-.49-.12-.64l-2.11-1.65zM12 15.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5 3.5 1.57 3.5 3.5-1.57 3.5-3.5 3.5z"></path></svg>
+                            Settings
+                        </a>
+                    </li>
+                    <li class="mb-3">
+                        <a href="#log-out-section" class="sidebar-link flex items-center text-gray-700 hover:text-red-600 hover:bg-red-50 p-3 rounded-lg transition-colors duration-200">
+                            <svg class="w-5 h-5 mr-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"></path></svg>
+                            Logout
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="bg-gradient-to-br from-indigo-500 to-purple-600 p-5 rounded-xl text-white text-center shadow-md">
+            <h3 class="text-lg font-semibold mb-2">Go Premium !</h3>
+            <p class="text-sm mb-3 opacity-90">Unlock all features and enhance your learning journey .</p>
+            <button class="bg-white text-indigo-700 font-bold py-2 px-4 rounded-full shadow-lg hover:bg-indigo-100 transition-colors duration-200">
+                UPGRADE NOW
+            </button>
+        </div>
+    </aside>
+
+    <main class="flex-1 p-6">
+        <header class="flex justify-between items-center mb-8">
+            <h1 class="text-3xl font-bold text-gray-800">Dashboard</h1>
+            <div class="flex items-center space-x-4">
+                <div class="relative">
+                    <input type="text" placeholder="Search courses" class="pl-10 pr-4 py-2 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-indigo-500 w-64">
+                </div>
+                <div class="relative inline-block text-left">
+    <button id="dropdownButton" onclick="toggleDropdown()" class="flex items-center gap-2 text-gray-700 hover:text-gray-900 focus:outline-none">
+        <img src="{{ url_for('static', filename='user-icon.png') }}" alt="User" class="w-8 h-8 rounded-full">
+        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06-.02L10 10.585l3.71-3.396a.75.75 0 011.04 1.084l-4.25 3.893a.75.75 0 01-1.04 0L5.25 8.29a.75.75 0 01-.02-1.08z" clip-rule="evenodd"/>
+        </svg>
+    </button>
+
+    <!-- Dropdown menu -->
+    <div id="dropdownMenu" class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-50">
+        <a href="{{ url_for('my_courses') }}" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Courses</a>
+        <a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile Settings</a>
+        <a href="{{ url_for('logout') }}" class="block px-4 py-2 text-red-600 hover:bg-gray-100">Logout</a>
+    </div>
+</div>
+
+            </div>
+        </header>
+
+        <div class="welcome-back-gradient text-white p-8 rounded-2xl shadow-lg mb-8 flex items-center">
+            <span class="text-4xl mr-4">👋</span>
+            <div>
+                <h1 class="text-3xl font-bold mb-2">Welcome back, {{ first_name }}!</h1>
+                <p class="text-lg opacity-90">Let's continue your learning journey and achieve new milestones.</p>
+            </div>
+        </div>
+
+        <section id="dashboard-section" class="mb-12 pt-4">
+    <h2 class="text-2xl font-semibold text-gray-800 mb-5">Your Progress Overview</h2>
+
+    <!-- Dashboard Stats -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+        <!-- In Progress -->
+        <div class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 hover:shadow-lg transition">
+            <div class="bg-blue-100 p-3 rounded-full text-blue-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm1 15H11V11h2v6zm0-8H11V7h2v2z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500">Courses in Progress</p>
+                <p class="text-3xl font-bold text-gray-800 mt-1">{{ progress_courses }}</p>
+            </div>
+        </div>
+
+        <!-- Completed -->
+        <div class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 hover:shadow-lg transition">
+            <div class="bg-green-100 p-3 rounded-full text-green-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M9 16.17L4.83 12l-1.42 1.41L9 19l12-12-1.41-1.41z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500">Completed Courses</p>
+                <p class="text-3xl font-bold text-gray-800 mt-1">{{ completed_courses }}</p>
+            </div>
+        </div>
+
+        <!-- Certificates -->
+        <div class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 hover:shadow-lg transition">
+            <div class="bg-purple-100 p-3 rounded-full text-purple-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 2C6.48 2 2 6.48 2 12c0 2.08.8 3.97 2.1 5.4L4 22l4.6-1.1C10.03 21.2 11.92 22 14 22c5.52 0 10-4.48 10-10S19.52 2 14 2z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500">Certificates Earned</p>
+                <p class="text-3xl font-bold text-gray-800 mt-1">{{ certificates_earned }}</p>
+            </div>
+        </div>
+
+        <!-- AI Credits -->
+        <div class="bg-white p-6 rounded-xl shadow-md flex items-center space-x-4 hover:shadow-lg transition">
+            <div class="bg-yellow-100 p-3 rounded-full text-yellow-600">
+                <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zM12 21.93V12H5V6.3l7-3.11v18.74z"/>
+                </svg>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500">AI Credits Used</p>
+                <p class="text-3xl font-bold text-gray-800 mt-1">{{ ai_credits_used }}/{{ ai_credits_limit }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Continue Learning Link -->
+    <div class="flex justify-between items-center mb-5">
+        <h2 class="text-2xl font-semibold text-gray-800">Continue Learning</h2>
+        <a href="{{ url_for('my_courses') }}"
+           class="text-indigo-600 hover:text-indigo-800 transition font-medium">
+            View All My Courses →
+        </a>
+    </div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    {% for course in courses %}
+    <div class="bg-white p-4 rounded-xl shadow-md">
+        <!-- Dynamic image from Unsplash based on course title -->
+        <img src="https://source.unsplash.com/400x200/?{{ course.title.split()[0] }}" 
+             alt="{{ course.title }}" 
+             class="course-card-image rounded mb-2 w-full h-40 object-cover">
+
+        <h3 class="text-lg font-semibold text-gray-800 mb-1">{{ course.title }}</h3>
+        <p class="text-sm text-gray-500 mb-2">{{ course.description[:100] }}...</p>
+
+        <!-- Dummy progress bar -->
+        <div class="w-full bg-gray-200 rounded-full h-2 mb-3">
+            <div class="bg-indigo-600 h-2 rounded-full" style="width: {{ 30 + loop.index * 10 }}%;"></div>
+        </div>
+        <p class="text-sm text-indigo-600 font-medium mb-2">Progress {{ 30 + loop.index * 10 }}%</p>
+    </div>
+    {% endfor %}
+</div>
+
+        </section>
+
+    <section id="my-courses-section" class="mb-12 pt-4">
+    <h1 class="text-3xl font-bold text-gray-800 mb-5">My Courses</h1>
+    <p class="text-gray-600 mb-6">Here you can view and manage all your enrolled courses.</p>
+    <div class="bg-white p-6 rounded-xl shadow-md">
+        <p class="text-gray-700">You haven't enrolled in any courses yet. Explore new skills!</p>
+        
+        <a href="{{ url_for('courses') }}">
+            <button class="mt-4 bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200">
+                Browse Courses
+            </button>
+        </a>
+    </div>
+</section>
+
+
+        <section id="explore-section" class="mb-12 pt-4">
+            <div class="flex justify-between items-center mb-5">
+                <h1 class="text-3xl font-bold text-gray-800">Discover New Skills</h1>
+                <a href="#explore-section" class="text-indigo-600 hover:underline font-medium">Explore All Courses</a>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <img src="static/uploads/mark.jpg" alt="Introduction to Marketing" class="course-card-image">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Introduction to Marketing</h3>
+                    <p class="text-sm text-gray-500 mb-2">Business</p>
+                    <div class="flex items-center text-yellow-500 mb-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <span class="ml-1 text-sm text-gray-600">(4.5)</span>
+                    </div>
+                    <button class="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 w-full">
+                        View Details
+                    </button>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <img src="static/uploads/photo.jpg" alt="Digital Photography Basics" class="course-card-image">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Digital Photography Basics</h3>
+                    <p class="text-sm text-gray-500 mb-2">Creative Arts</p>
+                    <div class="flex items-center text-yellow-500 mb-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <span class="ml-1 text-sm text-gray-600">(4.2)</span>
+                    </div>
+                    <button class="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 w-full">
+                        View Details
+                    </button>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <img src="static/uploads/full.jpg" alt="Full-Stack Web Dev Bootcamp" class="course-card-image">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Full-Stack Web Dev Bootcamp</h3>
+                    <p class="text-sm text-gray-500 mb-2">Technology</p>
+                    <div class="flex items-center text-yellow-500 mb-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <span class="ml-1 text-sm text-gray-600">(4.9)</span>
+                    </div>
+                    <button class="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 w-full">
+                        View Details
+                    </button>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <img src="static/uploads/ai.jpg" alt="AI for Everyone" class="course-card-image">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">AI for Everyone</h3>
+                    <p class="text-sm text-gray-500 mb-2">Artificial Intelligence</p>
+                    <div class="flex items-center text-yellow-500 mb-2">
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <svg class="w-4 h-4 fill-current text-gray-300" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"></path></svg>
+                        <span class="ml-1 text-sm text-gray-600">(3.8)</span>
+                    </div>
+                    <button class="bg-indigo-500 text-white py-2 px-4 rounded-lg hover:bg-indigo-600 transition-colors duration-200 w-full">
+                        View Details
+                    </button>
+                </div>
+            </div>
+
+            <h2 class="text-2xl font-semibold text-gray-800 mb-5">+ Boost Your Learning with AI</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-blue-500 to-indigo-600 text-white p-6 rounded-xl shadow-md flex flex-col items-start">
+                    <svg class="w-8 h-8 mb-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15H9V7h2v10zm4 0h-2V7h2v10z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">AI Tutor</h3>
+                    <p class="text-sm opacity-90">Get personalized help and explanations on complex topics</p>
+                </div>
+                <div class="bg-gradient-to-br from-purple-500 to-pink-600 text-white p-6 rounded-xl shadow-md flex flex-col items-start">
+                    <svg class="w-8 h-8 mb-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Content Summarizer</h3>
+                    <p class="text-sm opacity-90">Quickly grasp key points from long articles or videos</p>
+                </div>
+                <div class="bg-gradient-to-br from-green-500 to-teal-600 text-white p-6 rounded-xl shadow-md flex flex-col items-start">
+                    <svg class="w-8 h-8 mb-3" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-2 10H7v-2h10v2zm0-4H7V7h10v2z"></path></svg>
+                    <h3 class="text-xl font-semibold mb-2">Practice Quiz Generator</h3>
+                    <p class="text-sm opacity-90">Test your knowledge and prepare for exams effectively</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="ai-tools-section" class="mb-12 pt-4">
+            <h1 class="text-3xl font-bold text-gray-800 mb-5">AI Tools</h1>
+            <p class="text-gray-600 mb-6">Explore powerful AI tools to enhance your learning experience.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Smart Study Planner</h3>
+                    <p class="text-sm text-gray-500">Optimize your study schedule with AI.</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl shadow-md">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Personalized Feedback</h3>
+                    <p class="text-sm text-gray-500">Receive AI-driven feedback on your assignments.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="settings-section" class="mb-12 pt-4">
+            <h1 class="text-3xl font-bold text-gray-800 mb-5">Settings</h1>
+            <p class="text-gray-600 mb-6">Manage your account preferences and notifications.</p>
+            <div class="bg-white p-6 rounded-xl shadow-md">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Profile Settings</h3>
+                <p class="text-sm text-gray-500">Update your personal information.</p>
+                <h3 class="text-lg font-semibold text-gray-800 mt-3 mb-1">Notification Preferences</h3>
+                <p class="text-sm text-gray-500">Choose how you receive alerts.</p>
+            </div>
+        </section>
+
+        <section id="log-out-section" class="mb-12 pt-4">
+            <a href="{{ url_for('logout') }}">Logout</a>
+            <p class="text-gray-600 mb-6">Are you sure you want to log out?</p>
+            <a href="{{ url_for('add_many_courses') }}">Browse Courses</a>
+
+            <script src="{{ url_for('static', filename='script.js') }}"></script>
+            </button>
+        </section>
+
+    </main>
+<script>
+function toggleDropdown() {
+    const menu = document.getElementById("dropdownMenu");
+    menu.classList.toggle("hidden");
+}
+</script>
+
+</body>
+</html>

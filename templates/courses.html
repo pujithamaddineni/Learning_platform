@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Browse Courses</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen p-8">
+
+    <div class="max-w-6xl mx-auto">
+        <h2 class="text-3xl font-bold text-gray-800 mb-6">Browse Courses</h2>
+
+        <!-- Flash Messages -->
+        {% with messages = get_flashed_messages(with_categories=true) %}
+          {% if messages %}
+            <div class="mb-6">
+              {% for category, message in messages %}
+                <div class="p-4 rounded-lg shadow-sm text-sm font-semibold 
+                    {% if category == 'success' %}
+                        bg-green-100 text-green-800
+                    {% elif category == 'error' %}
+                        bg-red-100 text-red-800
+                    {% else %}
+                        bg-blue-100 text-blue-800
+                    {% endif %}">
+                  {{ message }}
+                </div>
+              {% endfor %}
+            </div>
+          {% endif %}
+        {% endwith %}
+
+        <!-- Course Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+          {% for course in courses %}
+            <div class="bg-white p-6 rounded-xl shadow hover:shadow-lg transition-all">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">{{ course.title }}</h3>
+              <p class="text-gray-600 mb-4">{{ course.description }}</p>
+
+              <form method="POST" action="{{ url_for('enroll', course_id=course.id) }}">
+                <button type="submit"
+                        class="w-full bg-indigo-600 text-white py-2 rounded-md hover:bg-indigo-700 transition">
+                  Enroll
+                </button>
+              </form>
+            </div>
+          {% endfor %}
+        </div>
+    </div>
+
+</body>
+</html>
