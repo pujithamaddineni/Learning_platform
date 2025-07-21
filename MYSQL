@@ -1,0 +1,134 @@
+MYSQL code
+create database mydatabase;
+show databases;
+use learning_portal;
+
+select * from user;
+delete from user where username='puji7'
+create table user( 
+id INT,name varchar(20));
+show tables;
+select * from course;
+ALTER TABLE enrollment ADD COLUMN progress INT DEFAULT 0;
+ALTER TABLE enrollment ADD COLUMN completed BOOLEAN DEFAULT FALSE;
+ALTER TABLE enrollment
+ADD COLUMN enrolled_at DATETIME DEFAULT CURRENT_TIMESTAMP;
+DESCRIBE enrollment;
+ALTER TABLE enrollment ADD COLUMN completed_at DATETIME NULL;
+ALTER TABLE course ADD COLUMN link VARCHAR(300);
+SELECT id, title, link FROM course;
+ALTER TABLE enrollment
+DROP FOREIGN KEY enrollment_ibfk_2;
+ALTER TABLE enrollment
+ADD CONSTRAINT enrollment_ibfk_2
+FOREIGN KEY (course_id) REFERENCES course(id) ON DELETE CASCADE;
+select * from enrollment
+DELETE FROM course WHERE link IS NULL AND id > 0;
+ALTER TABLE course ADD COLUMN image_url VARCHAR(500);
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?python,code'
+WHERE title LIKE '%Python%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?flask,web'
+WHERE title LIKE '%Flask%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?javascript,frontend'
+WHERE title LIKE '%JavaScript%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?react,ui'
+WHERE title LIKE '%React%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?mysql,database'
+WHERE title LIKE '%MySQL%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?data,structures'
+WHERE title LIKE '%Data Structures%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?algorithms,sorting'
+WHERE title LIKE '%Algorithms%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?html,css'
+WHERE title LIKE '%HTML%' OR title LIKE '%CSS%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?api,rest'
+WHERE title LIKE '%APIs%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?git,version-control'
+WHERE title LIKE '%Git%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?deploy,web'
+WHERE title LIKE '%Deploy%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?linux,terminal'
+WHERE title LIKE '%Linux%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?machine,learning'
+WHERE title LIKE '%Machine Learning%';
+
+UPDATE course
+SET image_url = 'https://source.unsplash.com/400x300/?tensorflow,deep'
+WHERE title LIKE '%Deep Learning%';
+UPDATE course SET image_url = 'static/uploads/python.jpg' WHERE id = 21;
+UPDATE course SET image_url = 'static/uploads/advanced_python.jpg' WHERE id = 22;
+UPDATE course SET image_url = 'uploads/python.jpg' WHERE id = 21;
+UPDATE course SET image_url = 'uploads/advanced_python.jpg' WHERE id = 22;
+
+
+
+SET SQL_SAFE_UPDATES = 1;
+SELECT id, title, image_url FROM course;
+UPDATE course SET image_url = NULL WHERE id > 0;
+ALTER TABLE course DROP COLUMN image_url;
+select * from course;
+DELETE FROM course WHERE id BETWEEN 41 AND 60;
+
+ALTER TABLE course ADD COLUMN category VARCHAR(100);
+ALTER TABLE course ADD COLUMN query VARCHAR(100);
+SET SQL_SAFE_UPDATES = 0;
+
+UPDATE course SET category = 'Python', query = 'python' WHERE title LIKE '%Python%';
+
+-- Web Development
+UPDATE course SET category = 'Web Development', query = 'webdev' 
+WHERE title LIKE '%HTML%' OR title LIKE '%CSS%' OR title LIKE '%JavaScript%' OR title LIKE '%Flask%' OR title LIKE '%React%' OR title LIKE '%APIs%';
+
+-- Databases
+UPDATE course SET category = 'Database', query = 'database' WHERE title LIKE '%MySQL%';
+
+-- Data Structures and Algorithms
+UPDATE course SET category = 'DSA', query = 'dsa' WHERE title LIKE '%Data Structures%' OR title LIKE '%Algorithms%';
+
+-- Machine Learning
+UPDATE course SET category = 'Machine Learning', query = 'ml' WHERE title LIKE '%Machine Learning%' OR title LIKE '%Deep Learning%' OR title LIKE '%TensorFlow%' OR title LIKE '%NLP%';
+
+-- Data Science
+UPDATE course SET category = 'Data Science', query = 'datascience' WHERE title LIKE '%Data Visualization%';
+
+-- DevOps & Cloud
+UPDATE course SET category = 'Cloud', query = 'cloud' WHERE title LIKE '%AWS%' OR title LIKE '%Cloud%';
+
+-- Cybersecurity
+UPDATE course SET category = 'Cybersecurity', query = 'cyber' WHERE title LIKE '%Cybersecurity%';
+
+-- Operating Systems
+UPDATE course SET category = 'Linux', query = 'linux' WHERE title LIKE '%Linux%';
+
+-- Version Control
+UPDATE course SET category = 'Tools', query = 'git' WHERE title LIKE '%Git%';
+
+-- Big Data
+UPDATE course SET category = 'Big Data', query = 'bigdata' WHERE title LIKE '%Big Data%';
