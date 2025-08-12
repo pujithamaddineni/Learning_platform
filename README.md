@@ -40,11 +40,6 @@ Our goal is to create a **dynamic, engaging, and intelligent educational hub** f
 
 ---
 
-## 👥 Team Roles
-1. **Backend Developer (Lead)** – API development, authentication, AI integration.
-2. **Frontend Developer (UI/UX)** – Design, responsive layouts, user-friendly interface.
-3. **AI/ML Engineer** – Model integration, fine-tuning, feature optimization.
-4. **Database & Deployment Engineer** – Database design, cloud deployment, performance monitoring.
 
 ---
 
@@ -60,9 +55,7 @@ IntelliLearn/
 ├── README.md # Project documentation
 └── config.py # Configuration settings
 
-yaml
-Copy
-Edit
+
 
 ---
 
@@ -113,4 +106,5 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 
 
 ---
+
 
