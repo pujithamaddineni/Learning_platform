@@ -66,6 +66,8 @@ IntelliLearn/
    cd IntelliLearn
 Create a virtual environment
 
+Create a virtual environment
+
 bash
 Copy
 Edit
@@ -106,5 +108,6 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 
 
 ---
+
 
 
