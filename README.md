@@ -64,34 +64,29 @@ IntelliLearn/
    ```bash
    git clone https://github.com/your-username/IntelliLearn.git
    cd IntelliLearn
-Create a virtual environment
 
-Create a virtual environment
 
-bash
-Copy
-Edit
+2. **Create a virtual environment**
+
+```bash
+
 python -m venv venv
 source venv/bin/activate    # On macOS/Linux
 venv\Scripts\activate       # On Windows
 Install dependencies
 
-bash
-Copy
-Edit
+```bash
+
 pip install -r requirements.txt
 Set up environment variables
 
-bash
-Copy
-Edit
+```bash
+
 export FLASK_APP=app.py
 export FLASK_ENV=development
 Run the application
 
-bash
-Copy
-Edit
+```bash
 flask run
 🌟 Future Improvements
 Mobile app version with AI voice assistant.
@@ -108,6 +103,7 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 
 
 ---
+
 
 
 
