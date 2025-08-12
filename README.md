@@ -18,8 +18,6 @@ Our goal is to create a **dynamic, engaging, and intelligent educational hub** f
 - **User Authentication** – Secure login & signup.
 - **AI Tutor** – Ask questions and get instant answers.
 - **Content Summarizer** – Convert long lessons into short key points.
-- **Quiz Generator** – Automatically generate quizzes based on topics.
-- **Smart Study Planner** – Plan and track learning schedules.
 - **Personalized Recommendations** – AI-based course suggestions.
 - **Progress Dashboard** – Track completed courses and learning milestones.
 
@@ -39,9 +37,6 @@ Our goal is to create a **dynamic, engaging, and intelligent educational hub** f
 **AI Models:**
 - Hugging Face Transformers (BERT, T5, etc.)
 - Custom fine-tuned NLP models
-
-**Deployment:**
-- Render / Heroku / AWS / Azure
 
 ---
 
@@ -118,3 +113,4 @@ This project is licensed under the MIT License – see the LICENSE file for deta
 
 
 ---
+
